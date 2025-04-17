@@ -10,6 +10,7 @@ def page(webdriver_fixture):
     return main_page
 
 def test_h1(page):
+
     assert 'Take Control Of Your Crypto World With RateX Pro' == page.element_is_visible(locator=PlansPageLocators.H1).text
 
 def test_pricing_default_cards_text_and_clk_buy_now(page):
@@ -22,6 +23,7 @@ def test_pricing_default_cards_text_and_clk_buy_now(page):
     assert 'Pro' == page.element_is_visible(locator=PlansPageLocators.SECOND_CARD_HEADER).text
     assert '$49' == page.element_is_visible(locator=PlansPageLocators.SECOND_CARD_PRICE).text.split('\n')[1].strip()
     assert '$299' == page.element_is_visible(locator=PlansPageLocators.SECOND_CARD_OLD_PRICE).text
+
     assert 'Buy Now' == page.element_is_visible(locator=PlansPageLocators.SECOND_CARD_BTN).text
     page.js_click(element=page.element_is_clickable(locator=PlansPageLocators.SECOND_CARD_BTN))
     page.url_changed(url=page.url)
@@ -30,6 +32,7 @@ def test_pricing_default_cards_text_and_clk_buy_now(page):
 def test_pricing_enterprise_card_text_and_clk_learn_more(page):
 
     assert 'Enterprise' == page.element_is_visible(locator=PlansPageLocators.FOURTH_CARD_HEADER).text
+
     assert 'Learn More' == page.element_is_visible(locator=PlansPageLocators.FOURTH_CARD_BTN).text
     page.js_click(element=page.element_is_clickable(locator=PlansPageLocators.FOURTH_CARD_BTN))
     page.url_changed(url=page.url)
